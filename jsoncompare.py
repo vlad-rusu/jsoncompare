@@ -120,4 +120,7 @@ if __name__ == '__main__':
   if len(diffs) > 0:
     print '\r\nFound differences comparing ' + location1 + ' and ' + location2
   for diff in diffs:
-    print diff['type'] + ': ' + diff['message']
+    try:
+      print diff['type'] + ': ' + diff['message']
+    except UnicodeEncodeError:
+      print "UnicodeEncodeError: 'ascii' codec can't encode character --> ignoring..."
